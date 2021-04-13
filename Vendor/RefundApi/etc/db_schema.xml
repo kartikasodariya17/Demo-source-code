@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="refund_adjustments" resource="default" engine="innodb" comment="Refund Data">
+		<column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Refund Id"/>
+		<column xsi:type="varchar" name="storese_order_id" nullable="false" length="120" comment="Store Order Id"/>
+		<column xsi:type="varchar" name="client_order_id" nullable="false" length="120" comment="Client Order Id"/>
+		<column xsi:type="varchar" name="storecode" nullable="false" length="255" comment="Storecode"/>
+		<column xsi:type="decimal" name="refund_amount" scale="4" precision="20" unsigned="false" nullable="false" default="0" comment="Refund Amount"/>
+		<column xsi:type="smallint" name="refund_type" nullable="false" comment="Refund Type"/>
+		<column xsi:type="smallint" name="status" nullable="false" default="0" comment="Status"/>
+		<column xsi:type="timestamp" name="created_at" default="CURRENT_TIMESTAMP" comment="Created At" nullable="false"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id"/>
+		</constraint>
+	</table>
+	<table name="refund_items" resource="default" engine="innodb" comment="Refund Items Data">
+		<column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Refund Item Id"/>
+		<column xsi:type="int" name="refund_id" nullable="false" comment="Refund Id"/>
+		<column xsi:type="varchar" name="sku" nullable="false" length="255" comment="SKU"/>
+		<column xsi:type="decimal" name="price_storese" scale="4" precision="12" unsigned="false" nullable="false" default="0" comment="Store Price"/>
+		<column xsi:type="decimal" name="price_fulfilled" scale="4" precision="12" unsigned="false" nullable="false" default="0" comment="Fulfilled Price"/>
+		<column xsi:type="decimal" name="qty_storese" scale="4" precision="12" unsigned="false" nullable="false" default="0" comment="Store Qty"/>
+		<column xsi:type="decimal" name="qty_fulfilled" scale="4" precision="12" unsigned="false" nullable="false" default="0" comment="Fulfilled Qty"/>
+		<column xsi:type="decimal" name="refund_amount_qty" scale="4" precision="12" unsigned="false" nullable="false" default="0" comment="Refund Amount Basaed on Qty"/>
+		<column xsi:type="decimal" name="refund_amount_difference" scale="4" precision="12" unsigned="false" nullable="false" default="0" comment="Refund Amount Basaed on Price Difference"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id"/>
+		</constraint>
+	</table>
+</schema>

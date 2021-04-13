@@ -1,0 +1,33 @@
+{
+    "refund_adjustments": {
+        "column": {
+            "id": true,
+            "storese_order_id": true,
+            "client_order_id": true,
+            "storecode": true,
+            "refund_amount": true,
+            "refund_type": true,
+            "status": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "refund_items": {
+        "column": {
+            "id": true,
+            "refund_id": true,
+            "sku": true,
+            "price_storese": true,
+            "price_fulfilled": true,
+            "qty_storese": true,
+            "qty_fulfilled": true,
+            "refund_amount_qty": true,
+            "refund_amount_difference": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
